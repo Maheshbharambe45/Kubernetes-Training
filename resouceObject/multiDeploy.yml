@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  labels:
+    app: demo 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: nginx-cont
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo-deployment
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-svc
+spec:
+  type: NodePort
+  selector:
+    app: demo
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30002

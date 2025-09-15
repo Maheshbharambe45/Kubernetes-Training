@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubantu-pod
+  labels:
+    app: ubantu
+spec:
+  containers:
+    - name: ubantu-cont
+      image: ubantu:latest
+      

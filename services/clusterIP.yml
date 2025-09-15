@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: csIP-service
+spec:
+  type: ClusterIP
+  selector:
+    app: demo
+  ports:
+    - ports: 80  # Service port
+      targetPort: 80 # containerPort
+
+# In k8 by default service is clusterIP 
