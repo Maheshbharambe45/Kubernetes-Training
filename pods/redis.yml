@@ -1,0 +1,13 @@
+# Apply the below YAML and fix the errors, including all the commands that you run during the troubleshooting and the error message
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: test
+  name: redis
+spec:
+  containers:
+  - name: redis 
+    image: redis:latest
+
+# line no 11 : image name should be redis insted of rediss
