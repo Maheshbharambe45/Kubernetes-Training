@@ -1,14 +1,13 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: demo-deployment
+  name: demo-rc
   labels:
-    app: demo 
+    app: demo
 spec:
   replicas: 2
   selector:
-    matchLabels:
-      app: demo
+    app: demo
   template:
     metadata:
       name: nginx-pod
@@ -16,7 +15,7 @@ spec:
         app: demo
     spec:
       containers:
-        - name: nginx-cont
+        - name: nginx-demo
           image: nginx:latest
           ports:
             - containerPort: 80
