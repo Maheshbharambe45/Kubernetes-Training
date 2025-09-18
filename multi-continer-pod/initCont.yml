@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-container-example
+spec:
+  initContainers:
+    - name: wait-for-db
+      image: busybox:1.36
+      command: ['sh', '-c', 'echo "Waiting for mydb..."; sleep 3;']
+  containers:
+    - name: app-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80
