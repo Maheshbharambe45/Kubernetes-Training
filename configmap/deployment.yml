@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  labels:
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      name: demo-pod
+      labels:
+        app: demo
+    spec: 
+      containers:
+        - name: nginx-cont
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name : USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config 
+                  key: username
+
+            - name : COLOR
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config 
+                  key: color               
+
+            - name : TYPE
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config 
+                  key: type
