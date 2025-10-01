@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: single-container-pod
+spec:
+  hostname: custom-hostname
+  containers:
+    - name: busybox
+      image: busybox
+      command: ["sh", "-c", "echo $(hostname) > /data/hostname.txt && cat /data/hostname.txt && sleep 3600"]
+      volumeMounts:
+        - name: temp-storage
+          mountPath: /data
+  volumes:
+    - name: temp-storage
+      emptyDir: {}

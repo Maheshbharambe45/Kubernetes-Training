@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-config
+  labels:
+    app: demo
+data:
+  name: Mahesh
+  color: navyBlue
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-pod
+  labels:
+    app: demo
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      command: ['sh' , '-c' , 'sleep 3600']
+      env:
+        - name: USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: demo-config
+              key: name
+
+        - name: COLOR
+          valueFrom:
+            configMapKeyRef:
+              name: demo-config
+              key: color
