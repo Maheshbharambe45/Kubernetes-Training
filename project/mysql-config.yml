@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+  namespace: python-sql-demo
+data:
+  DB_NAME: studentdb
