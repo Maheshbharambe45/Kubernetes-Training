@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-cf
+data:
+  NAME: MAHESH
+  ID: "1"

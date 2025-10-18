@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: Deployment
-metadata: 
-  name: demo-deploy
+kind: ReplicaSet
+metadata:
+  name: demoreplicaset
   labels:
     app: demo
 spec:
@@ -15,7 +15,7 @@ spec:
         app: demo
     spec:
       containers:
-        - name: nginx-cont
-          image: nginx:1.25.3
+        - name: my-ct
+          image: nginx:latest
           ports:
-            - containerPort: 80
+            - containerPort: 80 
