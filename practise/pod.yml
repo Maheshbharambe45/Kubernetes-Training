@@ -1,31 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mypod12
+  name : my-pod
   labels:
-    app: nginx   
+    app: flask
 spec:
   containers:
-    - image: nginx:latest
-      name: my-container
+    - image: maheshbharambe45/flask_app:latest
+      name: my-flask-cont
       ports:
-        - containerPort: 80
-      env:
-        - name: USERNAME
-          valueFrom:
-            configMapKeyRef:
-              name: demo-cf
-              key: NAME
-              
-        - name: ID
-          valueFrom:
-            configMapKeyRef:
-              name: demo-cf
-              key: ID
-        
-        - name: PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: my-secret
-              key: pass
-            
+        - containerPort: 5000
