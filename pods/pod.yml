@@ -1,12 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-pod
+  name: pod-demo
   labels:
-    app: nginx
-spec: 
+    app: demo
+spec:
   containers:
-    - name: nginx-cont
+    - name: my-cont
       image: nginx:latest
       ports:
         - containerPort: 80
+      env:
+        - name: NAME
+          value: "BHAGYA"
