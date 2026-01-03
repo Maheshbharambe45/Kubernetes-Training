@@ -10,3 +10,6 @@ spec:
       name: my-flask-cont
       ports:
         - containerPort: 5000
+      envFrom:
+        - configMapRef:
+            name: demo-cf

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-ppoodd
+spec:
+  containers:
+    - name: my-contt11
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: pod-vol
+          mountPath: /data
+  volumes:
+    - name: pod-vol
+      emptyDir: {}

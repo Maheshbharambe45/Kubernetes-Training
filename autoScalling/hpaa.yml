@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpa-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hpa-app
+  template:
+    metadata:
+      labels:
+        app: hpa-app
+    spec:
+      containers:
+      - name: app
+        image: nginx
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "200m"
+
+
+# kubectl autoscale deployment hpa-demo --cpu-percent=50 --min=2 --max=5
