@@ -19,5 +19,6 @@ spec:
           image: nginx:latest
           ports:
             - containerPort: 80
-  
+            
+# kubectl set image deployment/my-deployment web=nginx:latest
   
