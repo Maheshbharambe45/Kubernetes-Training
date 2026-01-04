@@ -1,13 +1,46 @@
+# These is a deployment configuration
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app: demo 
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: nginx-cont
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+            
+# These is a service configuration 
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: csIP-service
+  name: clusterip-service
 spec:
   type: ClusterIP
   selector:
     app: demo
   ports:
-    - ports: 80  # Service port
+    - port: 80  # Service port
       targetPort: 80 # containerPort
 
 # In k8 by default service is clusterIP 
+
+# How to access the service?
+# temporarily port forward the service to local machine
+
+# kubectl port-forward svc/clusterip-service 3000:80
+
+# How to access the application?
+# Open browser and type the URL: http://localhost:3000
