@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+data:
+  NAME: MAHESH_BHARAMBE
+  CITY: MUMBAI
+  PROFESSION: DEVOPS_ENGINEER
+
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: task-pod
+spec:
+  containers:
+    - name: nginx-cont
+      image: nginx:latest
+      envFrom:
+        - configMapRef:
+            name: config-map
