@@ -1,0 +1,22 @@
+# kubectl taint node docker-desktop gpu=true:NoSchedule
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  tolerations:
+  - key: "gpu"
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"
+
+
+
+# To untaint the node, use the following command:
+# kubectl taint node docker-desktop gpu=true:NoSchedule-
